@@ -68,6 +68,7 @@ app.get('/servers', async (req, res) => {
     res.send(txt)
 });
 
-app.listen(3000, () => {
+app.listen(8080, () => {
     console.log('Server running on port http://localhost:3000');
+
 });
