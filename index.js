@@ -31,16 +31,8 @@ async function generator() {
     };
     const r = await fetch("https://api.moomoo.io/verify", opts);
     if (!r.ok) return null;
-    const c = await r.json();
-    const n = solve(c);
-    if (n === null) return null;
-    return Buffer.from(JSON.stringify({
-        algorithm: c.algorithm,
-        challenge: c.challenge,
-        number: n,
-        salt: c.salt,
-        signature: c.signature
-    })).toString("base64");
+    const c = await r.text();
+    return c;
 }
 
 async function servers(url) {
@@ -72,3 +64,4 @@ app.listen(8080, () => {
     console.log('Server running on port http://localhost:3000');
 
 });
+
